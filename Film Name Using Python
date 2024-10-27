@@ -1,0 +1,26 @@
+#get movie information
+from imdb import IMDb
+
+def fetch_movie_info(movie_title):
+    # Create an instance of the IMDb class
+    ia = IMDb()
+    
+    # Search for the movie by title
+    movies = ia.search_movie(movie_title)
+    
+    # Check if any movies were found
+    if movies:
+        movie = movies[0]  # Get the first result (most relevant)
+        ia.update(movie)   # Fetch all the details about the movie
+        
+        # Display all available information about the movie
+        for key in movie.keys():
+            print(f"{key}: {movie[key]}")
+    else:
+        print(f"No movie found with title '{movie_title}'")
+
+# Example usage
+fetch_movie_info('Inception')  # Replace 'Inception' with any movie title you want to search for
+
+fetch_movie_info('Inception')
+
